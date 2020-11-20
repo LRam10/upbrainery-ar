@@ -18,14 +18,12 @@ firebase.initializeApp(firebaseConfig);
 // Create a reference from a Google Cloud Storage URI
     //var gsReference = storage.refFromURL('gs://bucket/models/volcano/scene.gltf');
 
-    storageRef.child('Models/volcano/scene.gltf').getDownloadURL().then(function(url) {
+    storageRef.child('Models/volcano/volcano.glb').getDownloadURL().then(function(url) {
     // `url` is the download URL for 'images/stars.jpg'
 
     let volcanoScene = document.getElementById("volcano");
     volcanoScene.setAttribute("gltf-model",`url(${url})`);
-    console.log(volcano);
     // Or inserted into an <img> element:
-    console.log(url)
   }).catch(function(error) {
     // Handle any errors
   });
