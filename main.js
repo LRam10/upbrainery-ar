@@ -13,10 +13,17 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
     console.log("ok")
     var storage = firebase.storage();
+    //reference for 3d model
     var storageRef = storage.ref();
+    //reference for patt
+    var pattRef = storage.ref();
 
-// Create a reference from a Google Cloud Storage URI
-    //var gsReference = storage.refFromURL('gs://bucket/models/volcano/scene.gltf');
+    pattRef.child('Patterns/volcano/pattern-volcanov2.patt').getDownloadURL().then(function(url){
+      let markerVolcano = document.getElementById('markerVolcano');
+      markerVolcano.setAttribute('url',url);
+    }).catch(function(error){
+      console.log(error);
+    });
 
     storageRef.child('Models/volcano/volcano.glb').getDownloadURL().then(function(url) {
     // `url` is the download URL for 'images/stars.jpg'
